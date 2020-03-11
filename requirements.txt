@@ -1,0 +1,5 @@
+numpy
+torch
+torchvision
+shutil
+apex
