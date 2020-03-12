@@ -143,16 +143,16 @@ def test():
     return correct / float(len(test_loader.dataset))
 
 def save_checkpoint(state, is_best, epoch, filepath):
-    torch.save(state, os.path.join(filepath, 'pruned_model_{}.pth'.format(epoch)))
+    torch.save(state, os.path.join(filepath, 'pruned_model.pth'))
     if is_best:
-        shutil.copyfile(os.path.join(filepath, 'pruned_model_{}.pth'.format(epoch)), os.path.join(filepath, 'pruned_model_best.pth'))
+        shutil.copyfile(os.path.join(filepath, 'pruned_model.pth'), os.path.join(filepath, 'pruned_model_best.pth'))
 
 best_prec = 0.
 for epoch in range(args.start_epoch, args.epochs):
     # lr decay !
-    if epoch in [args.epochs*0.5, args.epochs*0.75]:
-        for param_group in optimizer.param_groups:
-            param_group['lr'] *= 0.1
+    # if epoch in [args.epochs*0.5, args.epochs*0.75]:
+    #     for param_group in optimizer.param_groups:
+    #         param_group['lr'] *= 0.1
     train(epoch)
     prec = test()
     
