@@ -18,5 +18,5 @@
 ```
 ## finetune model
 ```
-  python finetune.py --pretrain pruned_weights/new_model.pth --cfg cfg.txt
+  python finetune.py --epochs 100 --resume pruned_weights/new_model.pth --cfg cfg.txt --lr 0.001
 ```
