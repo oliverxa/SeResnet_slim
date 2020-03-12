@@ -147,7 +147,7 @@ def obtain_filters_mask(model, prune_idx, thre):
 
 num_filters, filters_mask, pruned_filters, pruned_maskers = obtain_filters_mask(model, prune_idx, threshold)
 
-
+print(pruned_filters, file=open("cfg.txt","w"))
 new_model = pruned_model(num_classes, cfg = pruned_filters)
 new_model = new_model.to(device)
 
@@ -238,7 +238,7 @@ def model_eval(model,  dataset='cifar100'):
     print("\nTest Accuracy of 'pruned' model is: {}/{} ({:.1f}%)\n".format(
     correct, len(test_loader.dataset), 100. * correct / len(test_loader.dataset)))
 
-model_eval(new_model)
+model_eval(new_model, args.dataset)
 
 if args.save:
     if not os.path.exists(args.save):
