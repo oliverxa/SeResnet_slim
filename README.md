@@ -16,3 +16,7 @@
 ```
   python seresnet_prune.py --pretrain weights/model_best.pth --percent 0.5
 ```
+## finetune model
+```
+  python finetune.py --pretrain pruned_weights/new_model.pth --cfg cfg.txt
+```
